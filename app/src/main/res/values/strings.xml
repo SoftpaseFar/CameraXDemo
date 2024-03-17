@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CameraXDemo</string>
+    <string name="img_cap_btn">拍照</string>
+</resources>
