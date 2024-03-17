@@ -17,6 +17,7 @@
         android:layout_height="100dp"
         android:layout_margin="50dp"
         android:text="@string/img_cap_btn"
+        android:background="@drawable/rounded_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@+id/vertical_centerline" />
@@ -34,6 +35,7 @@
         android:layout_height="100dp"
         android:layout_margin="50dp"
         android:text="@string/switch_camera"
+        android:background="@drawable/rounded_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/vertical_centerline"
         app:layout_constraintRight_toRightOf="parent" />

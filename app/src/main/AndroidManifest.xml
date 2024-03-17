@@ -21,6 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CameraXDemo"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/rounded_button" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
