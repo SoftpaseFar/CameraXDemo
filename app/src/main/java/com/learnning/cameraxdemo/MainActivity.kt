@@ -27,7 +27,7 @@ import kotlin.math.sqrt
 class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
     private var imageCapture: ImageCapture? = null
-
+    private var cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +53,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewBinding.imageCaptureButton.setOnClickListener { takePhoto() }
+        viewBinding.switchButton.setOnClickListener { switchCamera() }
     }
-
 
     @SuppressLint("ClickableViewAccessibility")
     private fun startCamera() {
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 cameraProvider.unbindAll()
                 val camera = cameraProvider.bindToLifecycle(
                     this,
-                    CameraSelector.DEFAULT_BACK_CAMERA,
+                    cameraSelector,
                     preview,
                     imageCapture
                 )
@@ -148,7 +148,6 @@ class MainActivity : AppCompatActivity() {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
-
     // 点击拍照按钮
     private fun takePhoto() {
         Log.d(TAG, "test...")
@@ -186,6 +185,19 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         )
+    }
+
+    // 切换摄像头
+    private fun switchCamera() {
+        // 切换
+        cameraSelector = if (cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) {
+            CameraSelector.DEFAULT_FRONT_CAMERA
+        } else {
+            CameraSelector.DEFAULT_BACK_CAMERA
+        }
+
+        // 调整绑定关系
+        startCamera()
     }
 
     // 权限给予回调
@@ -227,6 +239,4 @@ class MainActivity : AppCompatActivity() {
             }
         }.toTypedArray()
     }
-
-
 }
